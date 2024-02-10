@@ -3,7 +3,7 @@ import { user } from "../models/user.js"
 
 export const authenticate = async (req, res, next) => {
     try {
-        const checkToken = req.cookies.logintokens || req.headers.cookie || req.headers.authorization.split(" ")[1];
+        const checkToken = req.cookies.logintokens || req.headers.cookie || req.headers.authorization.replace("Bearer ", "") || req.headers.authorization;
         // console.log(checkToken);
         if (checkToken) {
             // console.log("verifying token");
